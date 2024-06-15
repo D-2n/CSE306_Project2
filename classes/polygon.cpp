@@ -14,14 +14,15 @@ void generate_edges(Polygon *polygon){ //CALL ONLY ON EMPTY POLYGONS
 }
 
 Vector intersect(Vector &v1, Vector &v2, Edge_class &edge){
-    Vector N(v2[1] - v1[1], v1[0] - v2[0]);
+    Vector N(v2[1] - v1[1], v1[0] - v2[0], 1);
     double t = (v1 - edge.v1).dot(N) / (edge.v2 - edge.v1).dot(N);
     return edge.v1 + (edge.v2 - edge.v1) * t;
 }
 
 Vector intersect_voronoi(Vector &v1, Vector &v2, Edge_class &edge){
-    Vector M = (v1 + v2) / 2;
-    double t = (M - edge.v1).dot(v1 - v2) / (edge.v2 - edge.v1).dot(v1 - v2);
+    Vector M = (v1 + v2) / 2;   
+    Vector M_prime = M + (v1-v2)*(v1.weight - v2.weight)/(2*((v1 - v2).norm2()));
+    double t = (M_prime - edge.v1).dot(v1 - v2) / (edge.v2 - edge.v1).dot(v1 - v2);
     return edge.v1 + (edge.v2 - edge.v1) * t;
 }
 

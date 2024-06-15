@@ -1,15 +1,22 @@
 #include "vector.h"
 
-Vector::Vector(double x, double y, double z) {
+Vector::Vector(double x, double y, double w) {
     coords[0] = x;
     coords[1] = y;
-    coords[2] = z;
+    weight = w;
 }
 
 double Vector::dot(const Vector &vector) const {
     double result;
     for (int i = 0; i < 3; i++){
         result += (coords[i] * vector.coords[i]);
+    }
+    return result;
+}
+double Vector::norm2() const {
+    double result;
+    for (int i = 0; i < 3; i++){
+        result += (coords[i] * coords[i]);
     }
     return result;
 }

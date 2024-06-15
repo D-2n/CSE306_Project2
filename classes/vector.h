@@ -3,8 +3,9 @@
 
 class Vector{
 public:
-    Vector(double x = 0, double y = 0, double z = 0);
-    double coords[3];
+    Vector(double x = 0, double y = 0, double w2 = 1);
+    double coords[2];
+    double weight = 1;
     //needed for svg, didnt want to compile
     double operator[](int i) const; 
     double &operator[](int i); 
@@ -16,5 +17,6 @@ public:
     Vector operator*(const double &num) const;
     //dot product
     double dot(const Vector &vector) const;
+    double norm2() const;
 };
 #endif

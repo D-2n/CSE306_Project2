@@ -10,7 +10,10 @@ Vector generate_random_point(double min, double max) {
     static std::random_device rd;
     static std::mt19937 gen(rd());
     std::uniform_real_distribution<> dis(min, max);
-    return Vector(dis(gen), dis(gen));
+    std::uniform_real_distribution<> dis1(0.1, max);
+    double w = dis1(gen);
+    std::cout << w;
+    return Vector(dis(gen), dis(gen), dis1(gen));
 }
 
 Polygon create_square_around_point(const Vector& point, double side_length) {
