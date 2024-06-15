@@ -2,7 +2,7 @@ CXX = g++
 
 CXXFLAGS = -Wall -Iclasses -Ifunctions
 
-SRCDIRS = . classes functions
+SRCDIRS = . classes functions lbfgs
 
 
 SOURCES := $(wildcard $(addsuffix /*.cpp,$(SRCDIRS)))

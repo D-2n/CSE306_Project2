@@ -10,9 +10,8 @@ Vector generate_random_point(double min, double max) {
     static std::random_device rd;
     static std::mt19937 gen(rd());
     std::uniform_real_distribution<> dis(min, max);
-    std::uniform_real_distribution<> dis1(0.1, max);
+    std::uniform_real_distribution<> dis1(0, max+1);
     double w = dis1(gen);
-    std::cout << w;
     return Vector(dis(gen), dis(gen), dis1(gen));
 }
 
