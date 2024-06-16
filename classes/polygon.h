@@ -19,5 +19,6 @@ public:
     Polygon clip_voronoi(std::vector<WeightedVector> &points, WeightedVector &p_i);
     std::vector<Triangle> triangulate(Vector &main_point);
     double compute_area() const;
+    Vector compute_center() const;
 
 };

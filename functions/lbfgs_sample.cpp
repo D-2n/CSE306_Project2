@@ -90,8 +90,6 @@ lbfgsfloatval_t objective_function::evaluate(
                     sum += ((triangle.vertices[k] - this->points[i]).dot(triangle.vertices[l] - this->points[i]));
                 }
             }
-           // Vector cross = (triangle.vertices[1] - triangle.vertices[0]).cross(triangle.vertices[2] - triangle.vertices[0]);
-          //  double T_area =  cross.norm() / 2.0;
            
             Polygon triangle_poly;
             for (size_t v = 0; v < triangle.vertices.size(); ++v){

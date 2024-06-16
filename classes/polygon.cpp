@@ -117,3 +117,20 @@ double Polygon::compute_area() const {
     double final_area = std::abs(area / double(2.0));
     return final_area;
 }
+Vector Polygon::compute_center() const { //TODO: vrati ovo u projekat
+    double area = this->compute_area();
+    double c_x = 0.0;
+    double c_y = 0.0;
+
+    for (std::size_t i = 0; i < vertices.size(); ++i) {
+        std::size_t index = (i + 1) % vertices.size();
+        double cross = vertices[i].cross(vertices[index])[2];
+        c_x += (vertices[i][0] + vertices[index][0]) * cross;
+        c_y += (vertices[i][1] + vertices[index][1]) * cross;
+    }
+
+    c_x /= (6.0 * area);
+    c_y /= (6.0 * area);
+
+    return Vector(c_x, c_y);
+}
